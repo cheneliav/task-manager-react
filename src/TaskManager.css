@@ -1,0 +1,18 @@
+.task-manager-container{
+    width:100%;
+}
+
+.fa-plus-circle{
+    color:rgb(177, 174, 179);
+    font-size: 60px !important;
+    text-shadow: -3px 5px 2px #242020, -3px 5px #46403e;
+    padding-top: 5px;
+}
+.add-col-btn{
+    padding: 5px;
+    text-align: center;
+}
+
+.fa-plus-circle:hover{
+    color: rgb(218, 226, 226);
+}
