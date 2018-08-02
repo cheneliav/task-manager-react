@@ -17,7 +17,9 @@ class Task extends Component {
         this._handleFocus = this._handleFocus.bind(this);
         this._handleFocusOut = this._handleFocusOut.bind(this);
     }
-    
+    handleDeleteTask = () => {
+        this.props.deleteTask(this.props.indexTask);
+     };
     _handleFocus(text) {
         console.log('Focused with text: ' + text);
     }
@@ -29,9 +31,9 @@ class Task extends Component {
         return (
             <div className="card border-light mb-3" style={{maxWidth: "18rem", padding: "px"}}>
                 <div className="card-header"> 
-                    <ProjectName  name={this.tempProps.projectName} /> 
+                    <ProjectName  name={this.props.taskData.projectName} /> 
                     <i className="fa fa-trash" style={{position: "absolute", top: "0.5rem", bottom: "0.5rem",
-                        right: "0.5rem"}}></i>
+                        right: "0.5rem"}} onClick={this.handleDeleteTask}></i>
 
                 </div>
                 <div className="card-body">
@@ -50,3 +52,5 @@ class Task extends Component {
 }
 
 export default Task;
+
+
