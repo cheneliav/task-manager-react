@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import EditableLabel from 'react-inline-editing';
-import './ProjectName.css'
+import './Description.css'
 
-class ProjectName extends Component {
-    
+class Description extends Component {
     _handleFocus(text) {
         console.log('Focused with text: ' + text);
     }
@@ -14,20 +12,19 @@ class ProjectName extends Component {
     }
     render() {
         return (
-                <EditableLabel text={this.props.name}
+            <EditableLabel text={this.props.info}
                     labelClassName='myLabelClass'
                     inputClassName='myInputClass'
-                    inputWidth='80%'
+                    inputWidth='200px'
                     inputHeight='25px'
                     inputMaxLength='50'
                     labelFontWeight='bold'
                     inputFontWeight='bold'
                     onFocus={this._handleFocus}
                     onFocusOut={this._handleFocusOut}
-                />
-        
+            />
         );
     }
 }
 
-export default ProjectName;
+export default Description;

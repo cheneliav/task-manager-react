@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import EditableLabel from 'react-inline-editing';
 import './Task.css';
 import ProjectName from './ProjectName'
+import PersonOnTheTask from './PersonOnTheTask'
+import Description from './Description'
+import DateLabel from './DateLabel'
+import 'font-awesome/css/font-awesome.min.css';
+
 
 
 class Task extends Component {
@@ -23,16 +28,20 @@ class Task extends Component {
     render() {
         return (
             <div className="card border-light mb-3" style={{maxWidth: "18rem", padding: "px"}}>
-                {/* <div className="card-header">{this.tempProps.projectName}</div> */}
                 <div className="card-header"> 
-                    <ProjectName  name={this.tempProps.projectName} />
+                    <ProjectName  name={this.tempProps.projectName} /> 
+                    <i className="fa fa-trash" style={{position: "absolute", top: "0.5rem", bottom: "0.5rem",
+                        right: "0.5rem"}}></i>
+
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">{this.tempProps.assignedTo}</h5>
-                    <p className="card-text">{this.tempProps.description}</p>
+                    <h5 className="card-title">
+                        <PersonOnTheTask name={this.tempProps.assignedTo}/>
+                    </h5>
+                    <p className="card-text"><Description info={this.tempProps.description}/></p>
                 </div>
                 <div className="card-footer">
-                    <small className="text-muted">{this.tempProps.dateCreated} untill {this.tempProps.estimatedTime}</small>
+                    <small className="text-muted">{this.tempProps.dateCreated} untill {this.tempProps.estimatedTime} </small>
                 </div>
             </div>);
 
