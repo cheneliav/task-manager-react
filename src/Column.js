@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Column.css';
 import EditableLabel from 'react-inline-editing';
-
+import TaskList from './TaskList';
 
 class Column extends Component {
     constructor(props) {
@@ -31,10 +31,9 @@ class Column extends Component {
                 inputFontWeight='bold'
                 onFocusOut={this._handleFocusOut}
                 
-            />
+                />
          
-                <div className="task-list">
-                </div>
+                <TaskList />
             </div>
         );
     }

@@ -16,7 +16,10 @@
   
 
 }
- 
+*:not(.App) {
+  white-space: normal;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
