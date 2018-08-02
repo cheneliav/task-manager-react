@@ -3,8 +3,9 @@ import './Column.css';
 import EditableLabel from 'react-inline-editing';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import Task from './Task'
 import TaskList from './TaskList'
+import { findDOMNode } from 'react-dom';
+
 
 
 class Column extends Component {
@@ -14,12 +15,21 @@ class Column extends Component {
             columnTitle: 'Title',
             tasks : []
         }
-    }   
-    
+    }
+
     _handleFocusOut = (text) => {
-        if(text == null || text === ' ')
-            {this.setState({columnTitle: this.state.columnTitle})}
-        else this.setState({ columnTitle: text});
+        if (text === '' || text === ' ') {
+            console.log("this.state.columnTitle = " + this.state.columnTitle);
+            text = this.state.columnTitle;
+            this.setState({ columnTitle: text });
+
+
+        }
+        else {
+            this.setState({ columnTitle: text });
+        }
+
+        this.props.editColumn(this.props.index, text);
     }
 
     addTask = () => {
@@ -32,11 +42,14 @@ class Column extends Component {
     }
 
     render() {
-        console.log(this.state);
+        const { provided, innerRef } = this.props
         return (
-            <div className="column rounded">
+            <div className="column rounded"
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={innerRef}>
                 <EditableLabel text={this.state.columnTitle}
-                labelClassName='columnTitle'
+                labelClassName='column-title'
                 inputClassName='myInputClass'
                 inputWidth='150px'
                 inputHeight='25px'
@@ -60,6 +73,8 @@ class Column extends Component {
         );
     }
 
-}
 
+
+
+}
 export default Column;

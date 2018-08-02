@@ -15,3 +15,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.568),
     overflow-y: scroll;
     white-space: nowrap;
 }
+
+.column-title{
+    width: 100%;
+}
