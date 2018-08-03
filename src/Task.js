@@ -29,17 +29,17 @@ class Task extends Component {
     }
     render() {
         return (
-            <div className="card border-light mb-3" style={{maxWidth: "18rem", padding: "px"}}>
+            <div className="card border-light ml-1 mb-3 mr-1" style={{maxWidth: "18rem", padding: "px"}}>
                 <div className="card-header"> 
                     <ProjectName  name={this.props.taskData.projectName} /> 
-                    <i className="fa fa-trash" style={{position: "absolute", top: "0.5rem", bottom: "0.5rem",
+                    <i className="fa fa-trash" style={{position: "absolute", top: "0.5rem",
                         right: "0.5rem"}} onClick={this.handleDeleteTask}></i>
-
+                    
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">
+                    <div className="card-title">
                         <PersonOnTheTask name={this.tempProps.assignedTo}/>
-                    </h5>
+                    </div>
                     <p className="card-text"><Description info={this.tempProps.description}/></p>
                 </div>
                 <div className="card-footer">

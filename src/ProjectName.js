@@ -20,8 +20,8 @@ class ProjectName extends Component {
                     inputWidth='80%'
                     inputHeight='25px'
                     inputMaxLength='50'
-                    labelFontWeight='bold'
-                    inputFontWeight='bold'
+                    labelFontWeight='500'
+                    inputFontWeight='normal'
                     onFocus={this._handleFocus}
                     onFocusOut={this._handleFocusOut}
                 />

@@ -18,8 +18,8 @@ class Description extends Component {
                     inputWidth='200px'
                     inputHeight='25px'
                     inputMaxLength='50'
-                    labelFontWeight='bold'
-                    inputFontWeight='bold'
+                    labelFontWeight='normal'
+                    inputFontWeight='normal'
                     onFocus={this._handleFocus}
                     onFocusOut={this._handleFocusOut}
             />
