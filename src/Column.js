@@ -5,67 +5,71 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import TaskList from './TaskList'
 import { findDOMNode } from 'react-dom';
+import { Droppable } from 'react-beautiful-dnd';
 
 
 
 class Column extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            columnTitle: 'Title',
-            tasks : []
-        }
+        this.taskId = 1;
+    
     }
 
     _handleFocusOut = (text) => {
         if (text === '' || text === ' ') {
-            console.log("this.state.columnTitle = " + this.state.columnTitle);
-            text = this.state.columnTitle;
-            this.setState({ columnTitle: text });
-
+            return;
 
         }
-        else {
-            this.setState({ columnTitle: text });
-        }
-
+        
         this.props.editColumn(this.props.index, text);
     }
 
-    addTask = () => {
-
-        this.setState( {tasks: this.state.tasks.concat({ projectName: "Project Name"})});
-    }
-
-    deleteTask = (index) => {
-        this.setState( {tasks: this.state.tasks.filter((task, i) => i !== index)});
-    }
+    
 
     render() {
         const { provided, innerRef } = this.props
         return (
             <div className="column rounded"
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={innerRef}>
-                <EditableLabel text={this.state.columnTitle}
-                labelClassName='column-title'
-                inputClassName='myInputClass'
-                inputWidth='150px'
-                inputHeight='25px'
-                inputMaxLength={50}
-                labelFontWeight='bold'
-                inputFontWeight='bold'
-                onFocusOut={this._handleFocusOut}
-                
-            />
-                <div className="add-task-btn">
-                     <i className="fa fa-plus  bg-transparent" aria-hidden="true" onClick={this.addTask}></i> 
-                </div> 
+                {...provided.draggableProps}
 
-                 <div className="task-list">
-                   <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} />
+                ref={innerRef}>
+                <div {...provided.dragHandleProps}>
+                    <EditableLabel text={this.props.column.columnTitle}
+                        labelClassName='column-title'
+                        inputClassName='myInputClass'
+                        inputWidth='150px'
+                        inputHeight='25px'
+                        inputMaxLength={50}
+                        labelFontWeight='bold'
+                        inputFontWeight='bold'
+                        onFocusOut={this._handleFocusOut}
+                        
+                    />
                 </div>
+                <div className="add-task-btn">
+                    <i className="fa fa-plus  bg-transparent" aria-hidden="true" onClick={()=>this.props.addTask(this.props.index)}></i>
+                </div>
+
+
+                <Droppable droppableId={"" + this.props.index} type="TASK">
+                    {(provided1) => {
+                        return (
+                            <TaskList
+                                {...provided1.droppableProps}
+                                innerRef={provided1.innerRef}
+                                tasks={this.props.column.tasks} 
+                                deleteTask={this.props.deleteTask}
+                                editTask={this.props.editTask}
+                               
+                            >
+                                {provided1.placeholder}
+                            </TaskList>
+                        )
+                    }}
+
+                </Droppable>
+
 
 
             </div>

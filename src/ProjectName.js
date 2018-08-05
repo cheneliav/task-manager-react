@@ -5,13 +5,7 @@ import './ProjectName.css'
 
 class ProjectName extends Component {
     
-    _handleFocus(text) {
-        console.log('Focused with text: ' + text);
-    }
    
-    _handleFocusOut(text) {
-        console.log('Left editor with text: ' + text);
-    }
     render() {
         return (
                 <EditableLabel text={this.props.name}
@@ -22,8 +16,7 @@ class ProjectName extends Component {
                     inputMaxLength='50'
                     labelFontWeight='bold'
                     inputFontWeight='bold'
-                    onFocus={this._handleFocus}
-                    onFocusOut={this._handleFocusOut}
+                    onFocusOut={this.props._handleFocusOutProjectName}
                 />
         
         );

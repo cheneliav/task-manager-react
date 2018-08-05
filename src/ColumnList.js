@@ -24,7 +24,8 @@ class ColumnList extends Component {
 
     render() {
         return (
-            <Droppable droppableId="droppable" direction="horizontal">
+            // add type
+            <Droppable droppableId="droppable" direction="horizontal" type="COLUMN"> 
                 {(provided, snapshot) => (
                     <div className="column-list-container row"
                         ref={provided.innerRef}
@@ -36,13 +37,16 @@ class ColumnList extends Component {
 
 
                         {this.props.columns.map((column, index) => (
-                            <Draggable key={column.id} draggableId={column.id} index={index} >
+                            <Draggable key={column.id} draggableId={"column_" + column.id} index={index} type="COLUMN" >
                                 {(provided, snapshot) => (
                                     <div>
                                         <Column
                                             index={index}
                                             column={column}
                                             editColumn={this.props.editColumn}
+                                            addTask={this.props.addTask}
+                                            deleteTask={()=>this.props.deleteTask(index)}
+                                            editTask={this.props.editTask(index)}
                                             innerRef={provided.innerRef}
                                             provided={provided}
                                             style={this.getItemStyle(
