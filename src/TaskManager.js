@@ -32,7 +32,8 @@ class TaskManager extends Component {
         this.taskId = 1;
     }
     addColumn = () => {
-        this.setState({ columns: this.state.columns.concat({ columnTitle: "Title", id: this.id++, tasks: [] }) });
+        this.setState({ columns: this.state.columns.concat(
+            { columnTitle: "Title", id: this.id++, tasks: [] }) });
     }
 
     editColumn = (index, title) => {
@@ -43,7 +44,10 @@ class TaskManager extends Component {
 
     addTask = (index) => {
         let columns = this.state.columns.slice(0);
-        columns[index].tasks.push({ projectName: "Project Name", id: this.taskId++ });
+        columns[index].tasks.push(
+            { projectName: "Project Name", 
+            description: "Describe the task here", 
+            assignedTo: "Name", id: this.taskId++ });
         this.setState({ columns: columns });
     }
 

@@ -5,7 +5,9 @@ import './ProjectName.css'
 
 class ProjectName extends Component {
     
-   
+    _handleFocusOut = (text) =>{
+        this.props._handleFocusOut(text,"projectName");
+    } 
     render() {
         return (
                 <EditableLabel text={this.props.name}
@@ -16,7 +18,7 @@ class ProjectName extends Component {
                     inputMaxLength='50'
                     labelFontWeight='bold'
                     inputFontWeight='bold'
-                    onFocusOut={this.props._handleFocusOutProjectName}
+                    onFocusOut={this._handleFocusOut}
                 />
         
         );
